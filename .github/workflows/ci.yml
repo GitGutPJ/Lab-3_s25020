@@ -34,10 +34,10 @@ jobs:
         run: cat RandomForestRegressor.txt
 
       - name: Display RandomForestRegressor optimization params
-        run: cat RandomForestRegressor_optimize_params.csv
+        run: cat RandomForestRegressor_optimize_params.txt
 
       - name: Display RandomForestRegressor optimize results
-        run: RandomForestRegressor_optimize.csv
+        run: RandomForestRegressor_optimize.txt
 
       - name: Display documentation
         run: cat README.pdf
