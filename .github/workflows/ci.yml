@@ -1,0 +1,43 @@
+name: CI/CD Pipeline for Data analyze
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  data-processing:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Installing dependecies
+        run: pip install -r requirements.txt
+
+
+      - name: Run data cleaning & analyzing
+        run: python3 data_analyzing.py
+
+      - name: Run data modeling
+        run: python3 data_modeling.py
+
+      - name: Display RandomForestRegressor results
+        run: cat RandomForestRegressor.txt
+
+      - name: Display RandomForestRegressor optimization params
+        run: cat RandomForestRegressor_optimize_params.csv
+
+      - name: Display RandomForestRegressor optimize results
+        run: RandomForestRegressor_optimize.csv
+
+      - name: Display documentation
+        run: cat README.pdf

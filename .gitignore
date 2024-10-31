@@ -1,0 +1,12 @@
+/.idea/
+.venv
+creds.json
+log.txt
+report.txt
+cleaned_data.csv
+RandomForestRegressor_optimize_params.txt
+RandomForestRegressor_optimize.txt
+RandomForestRegressor.txt
+filtredCollegeDistance.csv
+/graphs/*.png
+ReadMe.pdf.docx
