@@ -1,8 +1,11 @@
+import os
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
+
 
 def read_CSV(url):
     df = pd.read_csv(url)
@@ -10,6 +13,7 @@ def read_CSV(url):
 
 
 def clean_and_analyze(df):
+    os.makedirs('graphs',exist_ok=True)
     print(f'Ilość wierszy i kolumn: {df.shape}')
     print(f'Ilość brakujących danych: {df.isna().sum()}')
     print(f'Statystyka zmiennych num:\n {df.describe}')
@@ -37,11 +41,12 @@ def clean_and_analyze(df):
     one_hot_df = pd.DataFrame(one_hot_encoded, columns=one_hot_encoder.get_feature_names_out(cat_columns))
 
     df_encoded = pd.concat([df, one_hot_df], axis=1)
-    df_encoded = df_encoded.drop(cat_columns,axis=1)
+    df_encoded = df_encoded.drop(cat_columns, axis=1)
 
-    #heatmap(df_encoded)
+    heatmap(df_encoded)
 
-    return df
+    return df_encoded
+
 
 def graphs_gen_num(num_columns):
     for col in num_columns:
