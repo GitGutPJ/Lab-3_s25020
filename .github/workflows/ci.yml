@@ -37,7 +37,5 @@ jobs:
         run: cat RandomForestRegressor_optimize_params.txt
 
       - name: Display RandomForestRegressor optimize results
-        run: RandomForestRegressor_optimize.txt
+        run: cat RandomForestRegressor_optimize.txt
 
-      - name: Display documentation
-        run: cat README.pdf
